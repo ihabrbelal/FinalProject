@@ -5,7 +5,11 @@
     float: left;
     border: solid #3A6A7A 2px;
     margin: 20px;
-    border-radius: 20px;
+    border-radius: 15px;
+}
+
+.productHolder:hover {
+    background-color: #BFBFBC;
 }
 
 .productHolder h3 {
