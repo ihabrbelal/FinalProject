@@ -5,8 +5,8 @@ var express = require('express');
 var app = express();
 // amazon npm
 var client = amazon.createClient({
-    awsId: "909AKIAJQFSG22R74FY6KWQ909",
-    awsSecret: "9098q25Etjkb4+20usC9tXnapGWR3KBWX9UFyQY6P/7909",
+    awsId: "AKIAJQFSG22R74FY6KWQ",
+    awsSecret: "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",
     // awsTag: "logylink-20"
 });
 
@@ -66,53 +66,53 @@ module.exports = function(app) {
                 throw err;
             }
             var products = data;
-            var array = [];
-            var asinArray = [];
-            var theAsin;
-            var theUpc;
+            // var array = [];
+            // var asinArray = [];
+            // var theAsin;
+            // var theUpc;
 
-            //pull UPC from data
-            for (i = 0; i < products.length; i++) {
-                product = products[i];
-                theUpc = product.upc;
-                theAsin = product.asin;
-                console.log('this is ASIN: ', theAsin);
-                array.push(theUpc);
-                asinArray.push(theAsin);
-            }
-            var queryItems;
-            // console.log(queryItems);
-            //  making call to amazon
-            client.itemLookup({
-                idType: 'ASIN',
-                itemId: asinArray.join(','),
-                responseGroup: 'ItemAttributes, Offers'
-            }, function(err, results, response) {
-                if (err) {
-                    console.log(JSON.stringify(err))
-                } else {
-                    for (var i = 0; i < array.length; i++) {
-                        if (results[i].ItemAttributes[0].ListPrice) {
-                            products[i].amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
-                            var amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
-                            console.log("amazonPrice: " + amazonPrice);
-                            var ourPrice = products[i].price;
-                            // console.log("You out here! " + theUpc);
-                            if (amazonPrice < ourPrice) {
-                                // console.log("You got here! " + theUpc);
-                                connection.query("UPDATE products SET ? WHERE ?", [{
-                                    price: amazonPrice
-                                }, {
-                                    asin: asinArray[i]
-                                }], function(err, res) {});
-                            }
-                        } else {
-                            products[i].amazonPrice = "Not available"
-                        }
-                    }
-                    res.json(products);
-                };
-            });
+            // //pull UPC from data
+            // for (i = 0; i < products.length; i++) {
+            //     product = products[i];
+            //     theUpc = product.upc;
+            //     theAsin = product.asin;
+            //     console.log('this is ASIN: ', theAsin);
+            //     array.push(theUpc);
+            //     asinArray.push(theAsin);
+            // }
+            // var queryItems;
+            // // console.log(queryItems);
+            // //  making call to amazon
+            // client.itemLookup({
+            //     idType: 'ASIN',
+            //     itemId: asinArray.join(','),
+            //     responseGroup: 'ItemAttributes, Offers'
+            // }, function(err, results, response) {
+            //     if (err) {
+            //         console.log(JSON.stringify(err))
+            //     } else {
+            //         for (var i = 0; i < array.length; i++) {
+            //             if (results[i].ItemAttributes[0].ListPrice) {
+            //                 products[i].amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
+            //                 var amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
+            //                 console.log("amazonPrice: " + amazonPrice);
+            //                 var ourPrice = products[i].price;
+            //                 // console.log("You out here! " + theUpc);
+            //                 if (amazonPrice < ourPrice) {
+            //                     // console.log("You got here! " + theUpc);
+            //                     connection.query("UPDATE products SET ? WHERE ?", [{
+            //                         price: amazonPrice
+            //                     }, {
+            //                         asin: asinArray[i]
+            //                     }], function(err, res) {});
+            //                 }
+            //             } else {
+            //                 products[i].amazonPrice = "Not available"
+            //             }
+            //         }
+            //     };
+            // });
+            res.json(products);
         });
     });
 }

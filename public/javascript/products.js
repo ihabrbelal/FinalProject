@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     $('#productsHolder').empty();
     displyProducts();
+
 });
 
 
@@ -18,10 +19,10 @@ var displyProducts = function() {
         url: queryURL,
         method: "GET"
     }).done(function(response) {
-        console.log(queryURL);
+        // console.log(queryURL);
         // var results = response.data;
         console.log(response);
-        console.log($('#productsHolder'));
+        // console.log($('#productsHolder'));
 
         for (var i = 0; i < response.length; i++) {
 
@@ -31,7 +32,12 @@ var displyProducts = function() {
             var beatormatch = $("<div style= 'float:left; width:60px; margin-left:20px;'>")
             var productImage = $("<img>");
             productImage.attr("alt", response[i].product_name);
-            productImage.attr("src", response[i].image);
+            if (response[i].image) {
+                productImage.attr("src", response[i].image);
+            } else {
+                productImage.attr("src", "/images/noimage.jpg");
+
+            }
             productImage.addClass('productImage');
 
             var name = response[i].product_name;
@@ -45,8 +51,8 @@ var displyProducts = function() {
             // }
             var compAmazon = response[i].amazonPrice * 100;
             var compPrice = response[i].price * 100;
-            console.log("compAmazon: ", compAmazon);
-            console.log("compPrice: ", compPrice);
+            // console.log("compAmazon: ", compAmazon);
+            // console.log("compPrice: ", compPrice);
 
 
 
@@ -54,7 +60,9 @@ var displyProducts = function() {
             productCaption.append("<div class ='desc'>" + "<p>" + desc + "</p>" + "</div");
             productCaption.append("<p>" + "<div class ='amazon'>" + "Amazon Price $ " + amazonPrice + "</div>" + " </p>");
             productCaption.append("<p>" + "<div class='ourPrice'>" + "Our Price: $ " + price + "</a>");
-            productCaption.append("<p>" + "<a class='btn btn-primary'>" + "Buy Now" + "</a>");
+            productCaption.append("<p>" + "<a class='add-to-cart btn btn-primary' data-price= '" + compPrice + "' data-name='" + name + "'>" + "Add to Cart" + "</a>");
+            // Add data attr 
+
 
             productDiv.append(beatormatch);
             productDiv.append(productImage);

@@ -4,14 +4,14 @@ This is an update of my other project beat or match.
 
 ## New version updates
 
-#### Better mobile responsive.
-#### Adding images carousel.
-#### Updating the routes to be able to sort the products.
-#### Adding shopping cart.
-#### Polishing the front end look.
-#### Adding more products and categories.
-#### Link Paypal API.
-#### Rout to edit mysql db tables.
+#### Better mobile responsive. ==
+#### Adding images carousel. ==
+#### Updating the routes to be able to sort the products. =
+#### Route to edit mysql db tables. =
+#### Adding shopping cart. =
+#### Polishing the front end look. =
+#### Adding more products and categories. =
+#### Link Paypal API. =
 <!-- 
 What things you need to install the software and how to install them
 

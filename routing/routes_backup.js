@@ -5,8 +5,8 @@ var express = require('express');
 var app = express();
 // amazon npm
 var client = amazon.createClient({
-    awsId: "090AKIAJQFSG22R74FY6KWQ090",
-    awsSecret: "0908q25Etjkb4+20usC9tXnapGWR3KBWX9UFyQY6P/7090",
+    awsId: "AKIAJQFSG22R74FY6KWQ",
+    awsSecret: "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",
     // awsTag: "logylink-20"
 });
 
@@ -16,31 +16,27 @@ module.exports = function(app) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/index.html"));
 
-
-
     });
 
 
     app.get("/admin", function(req, res) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/admin.html"));
-
-
     });
+
 
     app.get("/about", function(req, res) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/about.html"));
-
-
     });
+
 
     app.get("/contact", function(req, res) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/contact.html"));
-
-
     });
+
+
     app.post("/admin/items", function(req, res) {
         const { upc, asin, quantity, category, product_name, product_desc, image, price } = req.body;
 
@@ -60,9 +56,8 @@ module.exports = function(app) {
         connection.query("INSERT INTO products SET ?", newItem, function(err, res) {
             // res.status(200).json({ success: true });
         });
-
-
     });
+
 
     app.get("/api/ourproducts", function(req, res) {
         connection.query("SELECT * FROM products;", function(err, data) {
@@ -75,8 +70,6 @@ module.exports = function(app) {
             var asinArray = [];
             var theAsin;
             var theUpc;
-            //pull UPC from data
-
 
             //pull UPC from data
             for (i = 0; i < products.length; i++) {
@@ -114,7 +107,7 @@ module.exports = function(app) {
                                 }], function(err, res) {});
                             }
                         } else {
-                            products[i].amazonPrice = "Not available on amazon"
+                            products[i].amazonPrice = "Not available"
                         }
                     }
                     res.json(products);
