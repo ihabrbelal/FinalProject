@@ -6,14 +6,18 @@
 // });
 
 // $(document).ready(function() {
-$(document).on("click", ".add-to-cart", function() {
+$(document).on("click", ".add-to-cart", function(e) {
+    e.preventDefault();
+    var shopCart = [];
     var iteminfo = $(this.dataset)[0];
+    // iteminfo.qty = 1;
+
+    shopCart.push(iteminfo);
 
 
     // $(".add-to-cart").click(function() {
-    // e.preventDefault();
-    console.log(iteminfo);
-    console.log($(this).data("price"));
-    console.log($(this).data("name"));
+    console.log(shopCart);
+    // console.log($(this).data("price"));
+    // console.log($(this).data("name"));
     // console.log($(this));
 });

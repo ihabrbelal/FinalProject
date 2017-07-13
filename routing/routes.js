@@ -110,9 +110,9 @@ module.exports = function(app) {
                             products[i].amazonPrice = "Not available"
                         }
                     }
+                    res.json(products);
                 };
             });
-            res.json(products);
         });
     });
 }

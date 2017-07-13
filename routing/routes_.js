@@ -5,8 +5,8 @@ var express = require('express');
 var app = express();
 // amazon npm
 var client = amazon.createClient({
-    awsId: "AKIAJQFSG22R74FY6KWQ",
-    awsSecret: "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",
+    awsId: "909AKIAJQFSG22R74FY6KWQ909",
+    awsSecret: "9098q25Etjkb4+20usC9tXnapGWR3KBWX9UFyQY6P/7909",
     // awsTag: "logylink-20"
 });
 
@@ -110,9 +110,9 @@ module.exports = function(app) {
                             products[i].amazonPrice = "Not available"
                         }
                     }
-                    res.json(products);
                 };
             });
+            res.json(products);
         });
     });
 }

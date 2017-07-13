@@ -32,6 +32,8 @@ var displyProducts = function() {
             var beatormatch = $("<div style= 'float:left; width:60px; margin-left:20px;'>")
             var productImage = $("<img>");
             productImage.attr("alt", response[i].product_name);
+
+            // check if there is image for the product, if not shoe default image
             if (response[i].image) {
                 productImage.attr("src", response[i].image);
             } else {
@@ -61,7 +63,7 @@ var displyProducts = function() {
             productCaption.append("<div class ='desc'>" + "<p>" + desc + "</p>" + "</div");
             productCaption.append("<p>" + "<div class ='amazon'>" + "Amazon Price $ " + amazonPrice + "</div>" + " </p>");
             productCaption.append("<p>" + "<div class='ourPrice'>" + "Our Price: $ " + price + "</a>");
-            productCaption.append("<p>" + "<a class='add-to-cart btn btn-primary' data-name='" + name + "' data-price= '" + compPrice + "' data-id= '" + id + "'>" + "Add to Cart" + "</a>");
+            productCaption.append("<p>" + "<a class='add-to-cart btn btn-primary' data-name='" + name + "' data-price= '" + price + "' data-id= '" + id + "'>" + "Add to Cart" + "</a>");
             // Add data attr 
 
 
