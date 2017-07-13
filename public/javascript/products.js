@@ -40,6 +40,7 @@ var displyProducts = function() {
             }
             productImage.addClass('productImage');
 
+            var id = response[i].id;
             var name = response[i].product_name;
             var desc = response[i].product_desc;
             var price = parseFloat(response[i].price).toFixed(2);
@@ -60,7 +61,7 @@ var displyProducts = function() {
             productCaption.append("<div class ='desc'>" + "<p>" + desc + "</p>" + "</div");
             productCaption.append("<p>" + "<div class ='amazon'>" + "Amazon Price $ " + amazonPrice + "</div>" + " </p>");
             productCaption.append("<p>" + "<div class='ourPrice'>" + "Our Price: $ " + price + "</a>");
-            productCaption.append("<p>" + "<a class='add-to-cart btn btn-primary' data-price= '" + compPrice + "' data-name='" + name + "'>" + "Add to Cart" + "</a>");
+            productCaption.append("<p>" + "<a class='add-to-cart btn btn-primary' data-name='" + name + "' data-price= '" + compPrice + "' data-id= '" + id + "'>" + "Add to Cart" + "</a>");
             // Add data attr 
 
 
