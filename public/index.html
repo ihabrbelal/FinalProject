@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"> <img src="images/logo.png" class="img-fluid" width="100px" style="float:left"></a>
+                <a class="navbar-brand" href="/"> <img src="/images/logo.png" class="img-fluid" width="100px" style="float:left"></a>
                 <!-- <a class="navbar-brand" href="/"> <img src="images/logo.png" class="img-fluid" style="width:17%; float:right"> </a> -->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,16 +59,9 @@
                     <li>
                         <a href="user">User sign in</a>
                     </li>
-                    <li>
-                        <a href="#">Cart <span id="cartqty"> 0 </span></a>
-                    </li>
-                    <!--    <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" href="https://mobirise.com/">Categories</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="https://mobirise.com/">Mobile friendly</a><a class="dropdown-item" href="https://mobirise.com/">Based on Bootstrap</a>
-                            <div class="dropdown"><a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" href="https://mobirise.com/">Trendy blocks</a>
-                                <div class="dropdown-menu dropdown-submenu"><a class="dropdown-item" href="https://mobirise.com/">Image/content slider</a><a class="dropdown-item" href="https://mobirise.com/">Contact forms</a><a class="dropdown-item" href="https://mobirise.com/">Image gallery</a><a class="dropdown-item" href="https://mobirise.com/">Mobile menu</a><a class="dropdown-item" href="https://mobirise.com/">Google maps</a><a class="dropdown-item" href="https://mobirise.com/">Social buttons</a><a class="dropdown-item" href="https://mobirise.com/">Google fonts</a><a class="dropdown-item" href="https://mobirise.com/">Video background</a></div>
-                            </div><a class="dropdown-item" href="https://mobirise.com/">Host anywhere</a></div>
-                    </li> -->
                 </ul>
+                <a href="#" style="float:right; margin-right:30px"> <img src="/images/emptyCart.png" style="height: 40px" class="cartimg"> <span class="cartqty" style="color:white; font-size:20px"> 0 </span> <span style="color:white; font-size:20px"> Total: $ </span> <span class="carttotal" style="color:white; font-size:20px"> 0 </span>
+                </a>
             </div>
         </div>
         <!-- /.container -->
@@ -91,7 +84,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/images/carousel03.png" style="height:300px; width:1200px" class="img-fluid" alt="...">
+                    <img src="/images/carousel04.jpg" style="height:300px; width:1200px" class="img-fluid" alt="...">
                     <div class="carousel-caption">
                         <h3>Beat or Match</h3>
                     </div>
@@ -111,18 +104,20 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
-        <!-- Carousel -->
-        <!-- Jumbotron Header -->
-        <!-- <header style="color: #3A6A7A" class="jumbotron hero-spacer">
-            <img src="images/logo.png" width=200px height=100px>
-            <div style="float:right; text-align:left; padding:10px;">
-                <h1>Beat or Match!</h1>
-                <p>Welcome to the place you would guranteed get the best price on web</p>
-            </div>
-        </header> -->
         <hr>
         <!-- Title -->
         <div class="row">
+            <div>
+                <!-- HTML for SEARCH BAR -->
+                <div id="tfheader">
+                    <form id="tfnewsearch" method="get">
+                        <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
+                        <input type="submit" value="search" class="btn btn-info">
+                    </form>
+                    <div class="tfclear"></div>
+                </div>
+            </div>
+            <div id="output"> </div>
             <div class="col-lg-12">
                 <h3>Featured Products</h3>
             </div>

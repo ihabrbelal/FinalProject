@@ -65,11 +65,14 @@ module.exports = function(app) {
             if (err) {
                 throw err;
             }
+
             var products = data;
             var array = [];
             var asinArray = [];
             var theAsin;
             var theUpc;
+            var arrayTest = [];
+
 
             //pull UPC from data
             for (i = 0; i < products.length; i++) {
@@ -80,39 +83,12 @@ module.exports = function(app) {
                 array.push(theUpc);
                 asinArray.push(theAsin);
             }
+
             var queryItems;
             // console.log(queryItems);
             //  making call to amazon
-            client.itemLookup({
-                idType: 'ASIN',
-                itemId: asinArray.join(','),
-                responseGroup: 'ItemAttributes, Offers'
-            }, function(err, results, response) {
-                if (err) {
-                    console.log(JSON.stringify(err))
-                } else {
-                    for (var i = 0; i < array.length; i++) {
-                        if (results[i].ItemAttributes[0].ListPrice) {
-                            products[i].amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
-                            var amazonPrice = parseFloat((results[i].ItemAttributes[0].ListPrice[0].FormattedPrice[0]).substr(1).replace(/,/g, '')).toFixed(2);
-                            console.log("amazonPrice: " + amazonPrice);
-                            var ourPrice = products[i].price;
-                            // console.log("You out here! " + theUpc);
-                            if (amazonPrice < ourPrice) {
-                                // console.log("You got here! " + theUpc);
-                                connection.query("UPDATE products SET ? WHERE ?", [{
-                                    price: amazonPrice
-                                }, {
-                                    asin: asinArray[i]
-                                }], function(err, res) {});
-                            }
-                        } else {
-                            products[i].amazonPrice = "Not available"
-                        }
-                    }
-                    res.json(products);
-                };
-            });
+
+            res.json(products);
         });
     });
 }

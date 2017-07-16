@@ -21,7 +21,7 @@ var displyProducts = function() {
     }).done(function(response) {
         // console.log(queryURL);
         // var results = response.data;
-        console.log(response);
+        // console.log(response);
         // console.log($('#productsHolder'));
 
         for (var i = 0; i < response.length; i++) {
@@ -30,7 +30,7 @@ var displyProducts = function() {
             var productDiv = $("<div class ='productHolder thumbnail hero-feature view effect'>");
             var productCaption = $("<div>");
             var beatormatch = $("<div style= 'float:left; width:60px; margin-left:20px;'>")
-            var productImage = $("<img>");
+            var productImage = $("<img class='img-fluid'>");
             productImage.attr("alt", response[i].product_name);
 
             // check if there is image for the product, if not shoe default image
@@ -73,7 +73,7 @@ var displyProducts = function() {
             $('#productsHolder').append(productDiv);
 
             if (compPrice === compAmazon) {
-                beatormatch.append("<img src='images/match.png'></img>");
+                beatormatch.append("<img src='images/match.png' class='img-fluid'></img>");
             } else if (compPrice < compAmazon) {
                 beatormatch.append("<img src='images/beatOrMatchIcons.png'></img>");
             };

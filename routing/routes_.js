@@ -31,6 +31,7 @@ module.exports = function(app) {
     });
 
 
+
     app.get("/contact", function(req, res) {
         // res.redirect("/index.html");
         res.sendFile(path.join(__dirname, "../public/contact.html"));
