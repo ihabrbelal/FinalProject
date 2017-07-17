@@ -22,6 +22,7 @@ $(document).ready(function() {
 
         // loop thru the shopCart array to add change the quantity
         $.each(shopCart, function(index, value) {
+            console.log(index, "=", value.qty);
             if (value.id === itemInfo.id) {
                 value.qty = parseInt(value.qty) + parseInt(itemInfo.qty);
                 itemInCart = true;
