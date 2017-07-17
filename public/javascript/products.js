@@ -48,10 +48,10 @@ var displyProducts = function() {
             var price = parseFloat(response[i].price).toFixed(2);
             var amazonPrice = response[i].amazonPrice;
             var upc = response[i].upc;
-            // if (price > amazonPrice) {
-            //     price = amazonPrice;
+            if (price > amazonPrice) {
+                price = amazonPrice;
 
-            // }
+            }
             var compAmazon = response[i].amazonPrice * 100;
             var compPrice = response[i].price * 100;
             // console.log("compAmazon: ", compAmazon);
@@ -72,11 +72,21 @@ var displyProducts = function() {
             productDiv.append(productCaption);
             $('#productsHolder').append(productDiv);
 
-            if (compPrice === compAmazon) {
+            // compare amazon price and our price based on dom info
+
+            if (price === amazonPrice) {
                 beatormatch.append("<img src='images/match.png' class='img-fluid'></img>");
-            } else if (compPrice < compAmazon) {
+            } else if (price < amazonPrice) {
                 beatormatch.append("<img src='images/beatOrMatchIcons.png'></img>");
             };
+
+            // compare amazon price and our price based on the mysql table
+
+            // if (compPrice === compAmazon) {
+            //     beatormatch.append("<img src='images/match.png' class='img-fluid'></img>");
+            // } else if (compPrice < compAmazon) {
+            //     beatormatch.append("<img src='images/beatOrMatchIcons.png'></img>");
+            // };
 
 
         }

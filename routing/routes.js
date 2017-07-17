@@ -30,6 +30,11 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/about.html"));
     });
 
+    app.get("/checkout", function(req, res) {
+        // res.redirect("/index.html");
+        res.sendFile(path.join(__dirname, "../public/checkout.html"));
+    });
+
 
     app.get("/contact", function(req, res) {
         // res.redirect("/index.html");
