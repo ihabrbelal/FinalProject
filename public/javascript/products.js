@@ -29,6 +29,7 @@ var displyProducts = function() {
 
             var productDiv = $("<div class ='productHolder thumbnail hero-feature view effect'>");
             var productCaption = $("<div>");
+            // Image for beat and image for Match 
             var beatormatch = $("<div style= 'float:left; width:60px; margin-left:20px;'>")
             var productImage = $("<img class='img-fluid'>");
             productImage.attr("alt", response[i].product_name);
