@@ -5,15 +5,26 @@
 
 // });
 
+var queryURL = "";
+var cameras = "projectors";
+// "/api/ourproducts";
 $(document).ready(function() {
-
+    queryURL = "/api/ourproducts";
     $('#productsHolder').empty();
     displyProducts();
-
 });
-// var cat =
 
-var queryURL = "/api/ourproducts";
+// filter the data by 
+$(document).ready(function() {
+
+    $(".cat").click(function() {
+        $("#catTitle").html($(this).val().toUpperCase());
+        queryURL = "/api/ourproducts/" + $(this).val();
+        $('#productsHolder').empty();
+        displyProducts();
+    });
+})
+
 var displyProducts = function() {
     $.ajax({
         url: queryURL,

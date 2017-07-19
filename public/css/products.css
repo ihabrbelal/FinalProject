@@ -8,9 +8,10 @@
     border-radius: 15px;
 }
 
-.productHolder:hover {
+
+/*.productHolder:hover {
     background-color: #BFBFBC;
-}
+}*/
 
 .productHolder h3 {
     color: #3A6A7A;
