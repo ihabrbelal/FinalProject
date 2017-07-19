@@ -4,17 +4,41 @@
 //     alert("hello");
 
 // });
+// test the js and jquery link
+// $(document).ready(function() {
+//     console.log("hello");
+//     alert("hello");
+
+// });
 
 $(document).ready(function() {
 
-    $('#productsHolder').empty();
     displyProducts();
+
 
 });
 
+// add event for dropdown product category menu
+$("#categorySelect li a").on('click', function(event) {
+    event.preventDefault();
+    displyProducts($(this).data("category"));
+});
 
-var displyProducts = function() {
-    var queryURL = "/api/ourproducts";
+
+var displyProducts = function(category) {
+
+    // clear any existing products
+    $('#productsHolder').empty();
+
+    var queryURL = "/api/ourproducts/";
+
+    // if the category has been passed, add the parameter to the api call
+    // add a category heading and link back to 'view all products'
+    if(category) {
+        queryURL += category;
+        $('#productsHolder').prepend($("<h3 id='resultHead'><span></span> Results for " + category + " <br><a href='/' style='font-size:60%;'>Show All Products</a></h3>"));
+    }
+
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -23,6 +47,9 @@ var displyProducts = function() {
         // var results = response.data;
         // console.log(response);
         // console.log($('#productsHolder'));
+
+        // populate the number of results to the category heading, if present
+        $("#resultHead span").text(response.length);
 
         for (var i = 0; i < response.length; i++) {
 
