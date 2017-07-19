@@ -11,10 +11,10 @@ $(document).ready(function() {
     displyProducts();
 
 });
+// var cat =
 
-
+var queryURL = "/api/ourproducts";
 var displyProducts = function() {
-    var queryURL = "/api/ourproducts";
     $.ajax({
         url: queryURL,
         method: "GET"

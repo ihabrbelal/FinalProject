@@ -96,4 +96,38 @@ module.exports = function(app) {
             res.json(products);
         });
     });
+
+
+    app.get("/api/ourproducts/:category", function(req, res) {
+        connection.query('SELECT * FROM `products` WHERE `category` = ?', [req.params.category], function(err, data) {
+
+            if (err) {
+                throw err;
+            }
+
+            var products = data;
+            var array = [];
+            var asinArray = [];
+            var theAsin;
+            var theUpc;
+            var arrayTest = [];
+
+
+            //pull UPC from data
+            for (i = 0; i < products.length; i++) {
+                product = products[i];
+                theUpc = product.upc;
+                theAsin = product.asin;
+                console.log('this is ASIN: ', theAsin);
+                array.push(theUpc);
+                asinArray.push(theAsin);
+            }
+
+            var queryItems;
+            // console.log(queryItems);
+            //  making call to amazon
+
+            res.json(products);
+        });
+    });
 }
