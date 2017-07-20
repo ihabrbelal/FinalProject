@@ -4,41 +4,46 @@
 //     alert("hello");
 
 // });
-// test the js and jquery link
-// $(document).ready(function() {
-//     console.log("hello");
-//     alert("hello");
 
-// });
+var queryURL = "";
+var cameras = "projectors";
+// "/api/ourproducts";
+$(document).ready(function() {
+    queryURL = "/api/ourproducts";
+    $('#productsHolder').empty();
+    displyProducts();
+});
 
+// filter the data by 
 $(document).ready(function() {
 
-    displyProducts();
+    $(".cat").click(function() {
+        $("#catTitle").html($(this).data("category").toUpperCase());
+        queryURL = "/api/ourproducts/" + $(this).data("category");
+        $('#productsHolder').empty();
+        displyProducts();
+    });
+})
 
 
-});
+// search by keyword
+$(document).ready(function() {
 
-// add event for dropdown product category menu
-$("#categorySelect li a").on('click', function(event) {
-    event.preventDefault();
-    displyProducts($(this).data("category"));
-});
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+var keyword = $(".tftextinput").val();
+        console.log(keyword);
+
+        // $("#catTitle").html($(this).data("category").toUpperCase());
+        queryURL = "/api/ourproducts/search/" + keyword;
+        $('#productsHolder').empty();
+        displyProducts();
+    });
+})
 
 
-var displyProducts = function(category) {
 
-    // clear any existing products
-    $('#productsHolder').empty();
-
-    var queryURL = "/api/ourproducts/";
-
-    // if the category has been passed, add the parameter to the api call
-    // add a category heading and link back to 'view all products'
-    if(category) {
-        queryURL += category;
-        $('#productsHolder').prepend($("<h3 id='resultHead'><span></span> Results for " + category + " <br><a href='/' style='font-size:60%;'>Show All Products</a></h3>"));
-    }
-
+var displyProducts = function() {
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -48,15 +53,11 @@ var displyProducts = function(category) {
         // console.log(response);
         // console.log($('#productsHolder'));
 
-        // populate the number of results to the category heading, if present
-        $("#resultHead span").text(response.length);
-
         for (var i = 0; i < response.length; i++) {
 
 
             var productDiv = $("<div class ='productHolder thumbnail hero-feature view effect'>");
             var productCaption = $("<div>");
-            // Image for beat and image for Match 
             var beatormatch = $("<div style= 'float:left; width:60px; margin-left:20px;'>")
             var productImage = $("<img class='img-fluid'>");
             productImage.attr("alt", response[i].product_name);

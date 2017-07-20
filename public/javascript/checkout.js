@@ -56,12 +56,19 @@ $(document).ready(function() {
         var total = 0;
         var totalqty = 0;
         $.each(shopCart, function(index, value) {
+            var paypalIndex = (index + 1);
+            console.log(paypalIndex, "=", value.qty);
             console.log(value.price);
             var stotal = value.qty * value.price;
             totalqty += parseInt(value.qty);
             value.total = total;
             total += stotal;
-            holderHTML += '<tr><td>' + value.name + '</td><td>' + value.qty + '</td><td> $' + decimal(value.price) + '</td><td> $' + decimal(stotal) + '</td></tr>';
+
+            holderHTML += '<tr><td><input readonly type="text" name="item_name_' + paypalIndex + '"value="' + value.name + '"></td><td><input type="text" name="quantity_' + paypalIndex + '"value="' + value.qty + '"> </td><td><input readonly type="hidden" name="amount_' + paypalIndex + '"value="' + value.price + '"> $' + decimal(value.price) + '</td><td> $' + decimal(stotal) + '</td></tr>';
+
+
+            // holderHTML += '<tr><td>' + value.name + '</td><td> <input Type="text" name="quantity_' + paypalIndex + "value" + value.qty + ' < /td><td> $' + decimal(value.price) + '</td > <td> $' + decimal(stotal) + '</td> < /tr>';
+
         })
         $(".cartqty").html(totalqty + ' Items.  ');
         // holderHTML += '<div> Your total is: $' + decimal(total) + '</div>';

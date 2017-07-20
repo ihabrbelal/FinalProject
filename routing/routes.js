@@ -64,7 +64,6 @@ module.exports = function(app) {
     });
 
 
-
     app.get("/api/ourproducts", function(req, res) {
         connection.query("SELECT * FROM products;", function(err, data) {
 
@@ -100,7 +99,6 @@ module.exports = function(app) {
 
 
     app.get("/api/ourproducts/:category", function(req, res) {
-
         connection.query('SELECT * FROM `products` WHERE `category` = ?', [req.params.category], function(err, data) {
 
             if (err) {
@@ -132,8 +130,7 @@ module.exports = function(app) {
             res.json(products);
         });
     });
-
-    app.get("/api/ourproducts/search/:searchterm", function(req, res) {
+        app.get("/api/ourproducts/search/:searchterm", function(req, res) {
          var qry = 'SELECT * FROM `products` WHERE `product_name` LIKE ? OR `product_desc` LIKE ? OR `upc` LIKE ? OR `category` LIKE ?';
         var args = ['%'+req.params.searchterm+'%', '%'+req.params.searchterm+'%', '%'+req.params.searchterm+'%', '%'+req.params.searchterm+'%'];
        // SELECT * FROM products
@@ -170,7 +167,4 @@ module.exports = function(app) {
             res.json(products);
         });
 });
-    
 }
-
-
