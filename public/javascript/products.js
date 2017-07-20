@@ -18,8 +18,22 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     $(".cat").click(function() {
-        $("#catTitle").html($(this).val().toUpperCase());
-        queryURL = "/api/ourproducts/" + $(this).val();
+        $("#catTitle").html($(this).data("category").toUpperCase());
+        queryURL = "/api/ourproducts/" + $(this).data("category");
+        $('#productsHolder').empty();
+        displyProducts();
+    });
+})
+
+// search by keyword
+$(document).ready(function() {
+
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+        var keyword = $(".tftextinput").val();
+        console.log(keyword);
+        // $("#catTitle").html($(this).data("category").toUpperCase());
+        queryURL = "/api/ourproducts/search/" + keyword;
         $('#productsHolder').empty();
         displyProducts();
     });

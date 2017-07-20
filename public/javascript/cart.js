@@ -62,7 +62,7 @@ $(document).ready(function() {
             total += stotal;
             holderHTML += '<tr><td>' + value.name + '</td><td>' + value.qty + '</td><td> $' + decimal(value.price) + '</td><td> $' + decimal(stotal) + '</td></tr>';
         })
-        $(".cartqty").html(totalqty + ' Items.  ');
+        $(".cartqty").html(totalqty);
         // holderHTML += '<div> Your total is: $' + decimal(total) + '</div>';
         $('#output').html(holderHTML)
         $('#checkoutTotal').html('$' + decimal(total));

@@ -58,7 +58,7 @@
                         <a class="dropdown" data-toggle="dropdown">Categories</a>
                         <!-- <span class="caret"></span></button> -->
                         <ul class="dropdown-menu" id="catholder">
-                            <li>
+                            <!-- <li>
                                 <button class="cat" value="Cameras">Cameras</button>
                             </li>
                             <li>
@@ -66,10 +66,17 @@
                             </li>
                             <li>
                                 <button class="cat" value="smart watch">Smart Watches</button>
-                            </li>
-                            <!--  <li><a value="Cameras">Cameras</a></li>
-                            <li><a value="Projectors">Projectors</a></li>
-                            <li><a value="smart watches">Smart Watches</a></li> -->
+                            </li> -->
+                            <li><a href="/" class="cat" data-category="">All Categories</a></li>
+                            <li><a class="cat" data-category="Cameras">Cameras</a></li>
+                            <li><a class="cat" data-category="drones">Drones</a></li>
+                            <li><a class="cat" data-category="Cell Phones">Cell Phones</a></li>
+                            <li><a class="cat" data-category="Laptops">Laptops</a></li>
+                            <li><a class="cat" data-category="Projectors">Projectors</a></li>
+                            <li><a class="cat" data-category="smart watch">Smart Watches</a></li>
+                            <li><a class="cat" data-category="smart tv">Smart TV</a></li>
+                            <li><a class="cat" data-category="tablets">Tablets</a></li>
+                            <!-- ==== -->
                         </ul>
                     </li>
                     <!-- <li>
@@ -133,7 +140,7 @@
                 <div id="tfheader">
                     <form id="tfnewsearch" method="get">
                         <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
-                        <input type="submit" value="search" class="btn btn-info">
+                        <input id="submit" type="submit" value="search" class="btn btn-info">
                     </form>
                     <div class="tfclear"></div>
                 </div>
